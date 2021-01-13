@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
+Route::prefix('admin')->middleware(['auth'])->group(function() {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+});
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/berita', 'HomeController@beritaIndex')->name('berita.index');
 Route::get('/berita/detail', 'HomeController@beritaDetail')->name('berita.detail');
