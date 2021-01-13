@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/berita', 'HomeController@beritaIndex')->name('berita.index');
 Route::get('/berita/detail', 'HomeController@beritaDetail')->name('berita.detail');
+
+Route::get('post', 'PostController@index');
+Route::post('post', 'PostController@store')->name('post.store');
