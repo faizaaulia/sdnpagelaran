@@ -16,7 +16,8 @@ class AdminController extends Controller
 
     public function indexPost(Request $request)
     {
-        return ('show ' . $request->post);
+        $posts = Post::get()->where('type', $request->type);
+        return view('admin.index-post', compact('posts'));
     }
 
     public function create(Request $request)
@@ -43,26 +44,20 @@ class AdminController extends Controller
         return response()->json('error', 400);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function detail($type, $id)
     {
-        //
+        $post = Post::find($id);
+        if ($post) {
+            $view = view('admin/detail-post', compact('post', 'type'))->render();
+            return response()->json($view, 200);
+        }
+
+        return response()->json('error', 400);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($type, $id)
     {
-        //
+        return $id;
     }
 
     /**

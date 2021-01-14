@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#postTable').DataTable();
+
     $('.form-control').keyup(function() {
         $(this).removeClass('is-invalid');
     })
@@ -54,4 +56,22 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('.btn-detail').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            success: function(res) {
+                $('#detailModal').modal('show');
+                $('.modal-detail').html(res);
+            },
+            error: function() {
+                Swal.fire(
+                    'Error!',
+                    'Berita tidak ditemukan.',
+                    'error'
+                );
+            }
+        })
+    })
 });

@@ -57,8 +57,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse {{ request()->get('type') == 'berita' ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ request()->get('type') == 'berita' ? 'active' : '' }}" href="{{ route('create-post', ['type' => 'berita']) }}">Tambah Berita</a>
-                        <a class="collapse-item" href="{{ route('show-post', ['type' => 'berita']) }}">Daftar Berita</a>
+                        <a class="collapse-item {{ request()->get('type') == 'berita' && Request::segment(2) == 'tambah' ? 'active' : '' }}" href="{{ route('create-post', ['type' => 'berita']) }}">Tambah Berita</a>
+                        <a class="collapse-item {{ request()->get('type') == 'berita' && Request::segment(2) == 'lihat' ? 'active' : '' }}" href="{{ route('show-post', ['type' => 'berita']) }}">Daftar Berita</a>
                     </div>
                 </div>
             </li>

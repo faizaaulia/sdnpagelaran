@@ -40,7 +40,7 @@
 @push('scripts')
     <script src="{{ asset('js/app/admin.js') }}"></script>
     <script src="{{ asset('js/app/sweetalert2.all.min.js') }}"></script>
-    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
