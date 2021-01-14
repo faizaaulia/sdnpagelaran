@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Route::prefix('dashboard-auth')->group(function() {
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/', 'AdminController@index')->name('dashboard');
+    Route::get('lihat', 'AdminController@indexPost')->name('show-post');
+    Route::get('tambah', 'AdminController@create')->name('create-post');
+    Route::post('tambah-{type}', 'AdminController@store')->where('type', 'berita|pengumuman|agenda')->name('store-post');
+    
 });
 
 Route::get('/', 'HomeController@index')->name('home');

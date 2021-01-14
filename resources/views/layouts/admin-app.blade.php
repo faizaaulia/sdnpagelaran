@@ -18,6 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    @stack('styles')
+
 </head>
 
 <body id="page-top">
@@ -29,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-text mx-3">SDN Pagelaran</div>
             </a>
 
@@ -37,8 +39,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -47,16 +49,16 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+            <li class="nav-item {{ request()->get('type') == 'berita' ? 'active' : '' }}">
+                <a class="nav-link {{ request()->get('type') == 'berita' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="{{ request()->get('type') == 'berita' ? 'true' : 'false' }}" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Berita</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse {{ request()->get('type') == 'berita' ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item {{ request()->get('type') == 'berita' ? 'active' : '' }}" href="{{ route('create-post', ['type' => 'berita']) }}">Tambah Berita</a>
+                        <a class="collapse-item" href="{{ route('show-post', ['type' => 'berita']) }}">Daftar Berita</a>
                     </div>
                 </div>
             </li>
@@ -172,6 +174,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('sb-admin/js/sb-admin-2.min.js') }}"></script>
+
+    @stack('scripts')
 
 </body>
 
