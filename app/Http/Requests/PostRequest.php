@@ -28,6 +28,9 @@ class PostRequest extends FormRequest
             'title' => [
                 'required',
                 Rule::unique('posts', 'title')->where(function($query) {
+                    if ($this->method() == 'PUT')
+                        return $query->where('type', $this->route('type'))->where('id', '<>', $this->route('id'));
+
                     return $query->where('type', $this->route('type'));
                 })
             ],

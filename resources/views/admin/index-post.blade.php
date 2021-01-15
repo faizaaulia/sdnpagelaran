@@ -33,9 +33,13 @@
                                         <td>Deskripsi</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td class="d-flex flex-column">
-                                            <a href="{{ route('detail-post', ['type' => request()->get('type'), 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-detail d-inline btn-primary shadow-sm">Detail</a>
-                                            <a href="" class="mb-2 btn btn-sm d-inline btn-info shadow-sm">Edit</a>
-                                            <a href="" class="mb-2 btn btn-sm d-inline btn-danger shadow-sm">Detail</a>
+                                            <a href="{{ route('detail-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-detail btn-primary shadow-sm">Detail</a>
+                                            <a href="{{ route('edit-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-info shadow-sm">Edit</a>
+                                            <form action="{{ route('delete-post', ['type' => $item->type, 'id' => $item->id]) }}" method="post" data-type="{{ $item->type }}" class="btn-delete">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="mb-2 btn btn-sm btn-danger shadow-sm btn-block">Hapus</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,4 +73,7 @@
     <script src="{{ asset('js/app/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/app/admin.js') }}"></script>
     <script src="{{ asset('js/app/sweetalert2.all.min.js') }}"></script>
+    <script>
+        $('#postTable').DataTable();
+    </script>
 @endpush

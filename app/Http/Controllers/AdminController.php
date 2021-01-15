@@ -38,7 +38,7 @@ class AdminController extends Controller
         
         if ($data) {
             Post::create($data);
-            return response()->json(url(route('show-post', ['type' => 'berita'])), 200);
+            return response()->json(url(route('show-post', ['type' => $request->type])), 200);
         }
 
         return response()->json('error', 400);
@@ -55,31 +55,44 @@ class AdminController extends Controller
         return response()->json('error', 400);
     }
 
-    public function edit($type, $id)
+    public function edit(Request $request)
     {
-        return $id;
+        $postType = $request->type;
+        $type = ['berita', 'pengumuman', 'agenda'];
+        if (in_array($postType, $type)) {
+            $post = Post::find($request->id);
+            if ($post)
+                return view('admin/create-post', compact('post', 'postType'));
+            
+            return abort(404);
+        }        
+
+        return abort(404);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $type, $id)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($request->title);
+
+        if ($data) {
+            $post = Post::where('id', $id)->firstOrFail();
+            $post->update($data);
+
+            return response()->json(url(route('edit-post', ['type' => $type, 'id' => $post->id])), 200);
+        }
+        
+        return response()->json('error', 400);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($type, $id)
     {
-        //
+        $post = Post::find($id);
+        $delete = $post->delete();
+
+        if ($delete)
+            return response()->json(url(route('show-post', ['type' => $type])), 200);
+
+        return response()->json('error', 400);
     }
 }

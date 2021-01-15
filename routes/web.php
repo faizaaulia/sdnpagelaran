@@ -29,7 +29,9 @@ Route::prefix('cms-admin')->middleware(['auth'])->group(function() {
     Route::get('tambah', 'AdminController@create')->name('create-post');
     Route::post('tambah-{type}', 'AdminController@store')->where('type', 'berita|pengumuman|agenda')->name('store-post');
     Route::get('detail-{type}/{id}', 'AdminController@detail')->where('type', 'berita|pengumuman|agenda')->name('detail-post');
-    Route::get('edit-{type}/{id}', 'AdminController@edit')->where('type', 'berita|pengumuman|agenda')->name('edit-post');
+    Route::get('edit', 'AdminController@edit')->name('edit-post');
+    Route::put('edit-{type}/{id}', 'AdminController@update')->name('update-post');
+    Route::delete('delete-{type}/{id}', 'AdminController@destroy')->name('delete-post');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
