@@ -62,6 +62,19 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item {{ request()->get('type') == 'pengumuman' ? 'active' : '' }}">
+                <a class="nav-link {{ request()->get('type') == 'pengumuman' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="{{ request()->get('type') == 'pengumuman' ? 'true' : 'false' }}" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-bullhorn"></i>
+                    <span>Pengumuman</span>
+                </a>
+                <div id="collapseTwo" class="collapse {{ request()->get('type') == 'pengumuman' ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ request()->get('type') == 'pengumuman' && Request::segment(2) == 'tambah' ? 'active' : '' }}" href="{{ route('create-post', ['type' => 'pengumuman']) }}">Tambah Pengumuman</a>
+                        <a class="collapse-item {{ request()->get('type') == 'pengumuman' && Request::segment(2) == 'lihat' ? 'active' : '' }}" href="{{ route('show-post', ['type' => 'pengumuman']) }}">Daftar Pengumuman</a>
+                    </div>
+                </div>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
