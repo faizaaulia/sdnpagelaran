@@ -35,6 +35,7 @@ class AdminController extends Controller
         $data = $request->validated();
         $data['type'] = $request->type;
         $data['slug'] = Str::slug($request->title);
+        $data['thumbnail'] = $this->addThumbnail($request->desc);
         
         if ($data) {
             Post::create($data);
@@ -94,5 +95,18 @@ class AdminController extends Controller
             return response()->json(url(route('show-post', ['type' => $type])), 200);
 
         return response()->json('error', 400);
+    }
+
+    public function addThumbnail($desc) {
+        $doc = new \DOMDocument();
+        @$doc->loadHTML($desc);
+
+        $tags = $doc->getElementsByTagName('img');
+ 
+        foreach ($tags as $tag) {
+            return $tag->getAttribute('src');
+        }
+
+        return 'img/about-bg.jpg';
     }
 }

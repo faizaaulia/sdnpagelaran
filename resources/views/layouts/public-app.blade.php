@@ -5,75 +5,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>@yield('title') - SD Negeri Pagelaran</title>
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" href="{{ asset('css/app/style.css') }}">
+        @stack('styles')
     </head>
-    <body>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top {{ Route::currentRouteName() == 'home' ? '' : 'fixed-solid' }} px-0" id="main-nav">
-        <div class="container"><a class="navbar-brand d-md-none" href="index.html">SD NEGERI PAGELARAN</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div
-                class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav d-flex justify-content-between ml-auto" style="width: 100%;">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="posts.html">BERITA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">PENGUMUMAN</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">AGENDA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">PROFIL</a></li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-lg">
+            <div class="container">
+                <a href="{{ route('home') }}" class="navbar-brand">SDN Pagelaran</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ml-auto mr-lg-5">
+                        <a class="nav-item nav-link pl-lg-4 {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
+                        <a class="nav-item nav-link pl-lg-4 {{ Request::segment(1) == 'pengumuman' ? 'active' : '' }}" href="{{ route('post.index', ['type' => 'pengumuman']) }}">Pengumuman</a>
+                        <a class="nav-item nav-link pl-lg-4 {{ Request::segment(1) == 'berita' ? 'active' : '' }}" href="{{ route('post.index', ['type' => 'berita']) }}" href="posts.html">Berita</a>
+                        <a class="nav-item nav-link pl-lg-4 {{ Request::segment(1) == 'agenda' ? 'active' : '' }}" href="{{ route('post.index', ['type' => 'agenda']) }}" href="posts.html">Agenda</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     
     @yield('content')
 
-    <footer class="p-0">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>SD NEGERI PAGELARAN</h1>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 mt-lg-0 card d-flex flex-row flex-md-column">
-                    <div class="img-footer">
-                        <a href="#">
-                            <img src="{{ asset('img/home-bg.jpg') }}" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="ml-3 ml-md-0 mt-md-2 foo-detail">
-                        <a href="#">
-                            <h4 class="card-title">Praesent aliquam in tellus eu gravida.</h4>
-                        </a>
-                        <div class="date">
-                            <p class="m-0">22 November 2020</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 mt-lg-0 card d-flex flex-row flex-md-column">
-                    <div class="img-footer">
-                        <a href="#">
-                            <img src="{{ asset('img/about-bg.jpg') }}" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="ml-3 ml-md-0 mt-md-2 foo-detail">
-                        <a href="#">
-                            <h4 class="card-title">Curabitur a elementum purus. Praesent aliquam in tellus eu gravida.</h4>
-                        </a>
-                        <div class="date">
-                            <p class="m-0">22 November 2020</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid bg-white py-3 text-center">
-            <p class="m-0">2020 Copyright • All Right Reserved</p>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
 
     <script src="{{ asset('js/app/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/app/main.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

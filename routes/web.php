@@ -35,5 +35,9 @@ Route::prefix('cms-admin')->middleware(['auth'])->group(function() {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/berita', 'HomeController@beritaIndex')->name('berita.index');
-Route::get('/berita/detail', 'HomeController@beritaDetail')->name('berita.detail');
+Route::group([
+    'prefix' => '{type}',
+    'where' => ['type' => 'berita|pengumuman|agenda']], function() {
+        Route::get('/', 'HomeController@postIndex')->name('post.index');
+        Route::get('{slug}', 'HomeController@postDetail')->name('post.detail');
+    });

@@ -50,12 +50,12 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item {{ request()->get('type') == 'berita' ? 'active' : '' }}">
-                <a class="nav-link {{ request()->get('type') == 'berita' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="{{ request()->get('type') == 'berita' ? 'true' : 'false' }}" aria-controls="collapseTwo">
+                <a class="nav-link {{ request()->get('type') == 'berita' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="{{ request()->get('type') == 'berita' ? 'true' : 'false' }}" aria-controls="collapseOne">
                     <i class="fas fa-fw fa-newspaper"></i>
                     <span>Berita</span>
                 </a>
-                <div id="collapseTwo" class="collapse {{ request()->get('type') == 'berita' ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse {{ request()->get('type') == 'berita' ? 'show' : '' }}" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ request()->get('type') == 'berita' && Request::segment(2) == 'tambah' ? 'active' : '' }}" href="{{ route('create-post', ['type' => 'berita']) }}">Tambah Berita</a>
                         <a class="collapse-item {{ request()->get('type') == 'berita' && Request::segment(2) == 'lihat' ? 'active' : '' }}" href="{{ route('show-post', ['type' => 'berita']) }}">Daftar Berita</a>
