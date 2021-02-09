@@ -138,7 +138,7 @@ main {
                             &:hover {
                                 color: #0278ae;
                                 text-decoration: none;
-                                transition: transform .3s;
+                                transition: .35s;
                             }
                         }
                         &.other-card-title {
@@ -147,14 +147,7 @@ main {
                     }
                     .btn-read-more {
                         font-weight: 500;
-                        color: #0278ae;
-                        border-color: #0278ae;
-                        border-radius: 50px;
-                        &:hover {
-                            color: #fff;
-                            transition: .5s;
-                            box-shadow: 0 .5rem 1rem rgba(2, 120, 174, .2) !important;
-                        }
+                        transition: .5s;
                     }
                     .published-info {
                         p {
@@ -230,18 +223,6 @@ main {
         }
     }    
 }
-
-// @media only screen and (min-width: 768px) {
-//     .other-detail {
-//         display: block;
-//     }
-// }
-
-// @media (max-width: 768px) and (min-width: 991.98px) {
-//     .other-detail {
-//         display: none;
-//     }
-// }
 
 @media only screen and (max-width: 320px) {
     main {

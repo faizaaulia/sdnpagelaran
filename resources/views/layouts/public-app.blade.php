@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-lg">
             <div class="container">
-                <a href="{{ route('home') }}" class="navbar-brand">SDN Pagelaran</a>
+                {{-- <a href="{{ route('home') }}" class="navbar-brand">SDN Pagelaran</a> --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -34,8 +34,21 @@
     
     @yield('content')
 
-    <footer class="footer mt-auto py-3 bg-dark">
+    <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    <h5>Cari Informasi</h5>
+                    <form action="{{ route('search') }}" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Cari" aria-label="Cari" aria-describedby="basic-addon2" name="q">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-search white" style="color: white"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>

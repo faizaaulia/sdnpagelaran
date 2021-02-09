@@ -14,9 +14,14 @@ class HomeController extends Controller
     }
 
     public function postIndex(Request $request) {
-        $posts = Post::where('type', $request->segment(1))->orderBy('updated_at', 'DESC')->paginate(3);
+        $cari = $request->q;
+        if ($cari)
+            $posts = Post::where('title', 'like', "%$request->q%")->orderBy('updated_at', 'DESC')->paginate(3);
+        else
+            $posts = Post::where('type', $request->segment(1))->orderBy('updated_at', 'DESC')->paginate(3);
+
         $other = Post::limit(5)->orderBy('updated_at', 'DESC')->get();
-        return view('post', compact('posts', 'other'));
+        return view('post', compact('posts', 'other', 'cari'));
     }
 
     public function postDetail($type, $slug) {

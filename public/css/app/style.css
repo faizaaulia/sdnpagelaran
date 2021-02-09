@@ -172,10 +172,8 @@ main .wrapper .infos .card .card-detail a.card-title, main .wrapper .infos .card
 main .wrapper .infos .card .card-detail a.card-title:hover, main .wrapper .infos .card .card-detail a.other-card-title:hover, main .wrapper .posts .card .card-detail a.card-title:hover, main .wrapper .posts .card .card-detail a.other-card-title:hover {
   color: #0278ae;
   text-decoration: none;
-  -webkit-transition: -webkit-transform .3s;
-  transition: -webkit-transform .3s;
-  transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
+  -webkit-transition: .35s;
+  transition: .35s;
 }
 
 main .wrapper .infos .card .card-detail a.other-card-title, main .wrapper .posts .card .card-detail a.other-card-title {
@@ -184,17 +182,8 @@ main .wrapper .infos .card .card-detail a.other-card-title, main .wrapper .posts
 
 main .wrapper .infos .card .card-detail .btn-read-more, main .wrapper .posts .card .card-detail .btn-read-more {
   font-weight: 500;
-  color: #0278ae;
-  border-color: #0278ae;
-  border-radius: 50px;
-}
-
-main .wrapper .infos .card .card-detail .btn-read-more:hover, main .wrapper .posts .card .card-detail .btn-read-more:hover {
-  color: #fff;
   -webkit-transition: .5s;
   transition: .5s;
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(2, 120, 174, 0.2) !important;
-          box-shadow: 0 0.5rem 1rem rgba(2, 120, 174, 0.2) !important;
 }
 
 main .wrapper .infos .card .card-detail .published-info p, main .wrapper .posts .card .card-detail .published-info p {

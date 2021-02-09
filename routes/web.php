@@ -41,3 +41,4 @@ Route::group([
         Route::get('/', 'HomeController@postIndex')->name('post.index');
         Route::get('{slug}', 'HomeController@postDetail')->name('post.detail');
     });
+Route::get('cari', 'HomeController@postIndex')->name('search');

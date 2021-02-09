@@ -31,29 +31,16 @@
                                 </div>
                             </a>
                             <div class="card-detail">
-                                <a href ="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="card-title">{{ $post->title }}</a>
+                                <a href ="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="clearfix card-title">{{ $post->title }}</a>
+                                <small style="font-weight: 500"><i class="fas fa-calendar text-gray-300 my-2"></i> {{ $post->formated_date }} </small>
                                 <div class="card-text my-2">
                                     {!! $post->excerpt !!}
                                 </div>
-                                <a href="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="btn btn-outline-primary btn-read-more">Baca Selengkapnya</a>
+                                <a href="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="btn btn-sm btn-link btn-read-more pl-0 py-0">Baca Selengkapnya →</a>
                             </div>
                         </div>
                     </div>
                     @endforeach
-                    {{-- <div class="col-lg col-12 mb-3 p-3">
-                        <div class="card shadow">
-                            <a href="#">
-                                <div class="card-image">
-                                    <img src="img/loft.jpg" alt="" class="card-img shadow-sm">
-                                </div>
-                            </a>
-                            <div class="card-detail">
-                                <a href ="#" class="card-title">Lorem ipsum dolor sit amet consectetur, adipisicing elitadipisicing</a>
-                                <p class="card-text">Laboriosam minus laudantium ea pariatur nisi, rerum qui facere voluptatem dolorum eum est aspernatur cum! Odio, corrupti consequatur...</p>
-                                <a href="#" class="btn btn-outline-primary btn-read-more">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
 

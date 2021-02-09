@@ -13,23 +13,33 @@
         </nav>
         <div class="row posts mb-5">
             <div class="col-12 col-lg-8">
-                @foreach ($posts as $post)
+                @if ($cari)
+                    <h3 class="mb-3">Hasil pencarian "{{ $cari }}"</h3>
+                @endif
+                @forelse ($posts as $post)
                 <div class="card shadow posts-card">
-                    <a href="{{ route('post.detail', ['type' => Request::segment(1), 'slug' => $post->slug]) }}">
+                    <a href="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}">
                         <div class="card-image">
                             <img src="{{ asset($post->thumbnail) }}" alt="{{ $post->title }}" class="card-img shadow-sm img-posts">
                         </div>
                     </a>
                     <div class="card-detail">
-                        <a href ="{{ route('post.detail', ['type' => Request::segment(1), 'slug' => $post->slug]) }}" class="card-title">{{ $post->title }}</a> <br>
+                        <a href ="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="clearfix card-title">{{ $post->title }}</a>
                         <small style="font-weight: 500"><i class="fas fa-calendar text-gray-300 my-2"></i> {{ $post->formated_date }} </small>
-                        <div class="card-text mb-3">
+                        <div class="card-text my-2">
                             {!! $post->excerpt !!}
                         </div>
-                        <a href="{{ route('post.detail', ['type' => Request::segment(1), 'slug' => $post->slug]) }}" class="btn btn-outline-primary btn-read-more">Baca Selengkapnya</a>
+                        <hr class="my-2">
+                        <a href="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="btn btn-sm btn-link btn-read-more pl-0 py-0">Baca Selengkapnya →</a>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                @if ($cari)
+                    Pencarian tidak ditemukan
+                @else
+                    Belum ada {{ Request::segment(1) }}
+                @endif
+                @endforelse
 
                 {{ $posts->links() }}
             </div>
