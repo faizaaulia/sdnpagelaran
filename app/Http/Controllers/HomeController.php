@@ -14,13 +14,15 @@ class HomeController extends Controller
     }
 
     public function postIndex(Request $request) {
-        $posts = Post::where('type', $request->segment(1))->get();
-        return view('post', compact('posts'));
+        $posts = Post::where('type', $request->segment(1))->orderBy('updated_at', 'DESC')->paginate(3);
+        $other = Post::limit(5)->orderBy('updated_at', 'DESC')->get();
+        return view('post', compact('posts', 'other'));
     }
 
     public function postDetail($type, $slug) {
         $post = Post::where(['type' => $type, 'slug' => $slug])->first();
+        $other = Post::limit(5)->whereNotIn('id', [$post->id])->orderBy('updated_at', 'DESC')->get();
         
-        return view('post-detail', compact('post'));
+        return view('post-detail', compact('post', 'other'));
     }
 }

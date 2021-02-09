@@ -27,7 +27,7 @@ header {
                 transition: .3s;
             }
             .fa-bars {
-                color: rgba(0,0,0,.7);
+                color: rgba(0, 0, 0, 0.808);
             }
         }
         .navbar-collapse {
@@ -83,10 +83,10 @@ main {
         padding: 0px;
         .latest-info {
             font-weight: 600;
-            color: rgba(0,0,0,.7);
+            color: rgba(0, 0, 0, 0.808);
         }
         .hero-title {
-            color: rgba(0,0,0,.7);
+            color: rgba(0, 0, 0, 0.808);
         }
         .infos, .posts {
             .card {
@@ -109,6 +109,8 @@ main {
                     img {
                         border-radius: .35rem;
                         max-height: 50vh;
+                        width: 100%;
+                        height: auto !important;
                         transition: transform 1.5s ease;
                         @media (min-width: 768px) and (max-width: 991.98px) {
                             max-height: 40vh;
@@ -132,7 +134,7 @@ main {
                     a {
                         &.card-title, &.other-card-title {
                             font-size: 18px;
-                            color: rgba(0,0,0,.7);
+                            color: rgba(0, 0, 0, 0.808);
                             &:hover {
                                 color: #0278ae;
                                 text-decoration: none;
@@ -177,7 +179,7 @@ main {
             }
             .contact-title {
                 font-weight: 600;
-                color: rgba(0,0,0,.7);
+                color: rgba(0, 0, 0, 0.808);
             }
             .left {
                 .map-loc {

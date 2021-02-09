@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>@yield('title') - SD Negeri Pagelaran</title>
+        <meta name="keywords" content="sdn pagelaran, sdn, pagelaran, sd, malang, sd pagelaran, kecamatan pagelaran, kab malang, kabupaten malang, kab. malang, sd negeri pagelaran" />
+        <title> @yield('title') </title>
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

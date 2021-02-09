@@ -1,6 +1,6 @@
 @extends('layouts.public-app')
 
-@section('title', 'Judul Berita')
+@section('title', $post->title . ' | ' . config('app.name'))
 
 @section('content')
 <main role="main" class="container pt-3">
@@ -12,13 +12,8 @@
                         <h2 class="mb-3">{{ $post->title }}</h2>
                         <div class="row published-info">
                             <div class="col published-by">
-                                <h6>Dipublikasikan oleh</h6>
-                                {{-- CREATED BY USER --}}
-                                <p class="m-0">Admin</p>
-                            </div>
-                            <div class="col">
-                                <h6>Tanggal</h6>
-                                <p class="m-0">{{ $post->updated_at }}</p>
+                                <h6>Dipublikasikan</h6>
+                                <p class="m-0"><i class="fas fa-calendar text-gray-300 mr-1"></i>{{ $post->formated_date }}</p>
                             </div>
                         </div>
                         <hr>
@@ -32,47 +27,20 @@
                 <div class="card shadow py-3">
                     <h4 class="text-center mb-0">Informasi Lainnya</h4>
                     <div>
+                        @foreach ($other as $item)
                         <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <hr>
                             <div class="col-4 pr-0 my-auto">
-                                <img src="{{ asset('img/about-bg.jpg') }}" alt="" class="w-100 h-75">
+                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
+                                    <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100 h-75">
+                                </a>
                             </div>
                             <div class="col-8">
-                                <a href="#" class="other-card-title">Lorem ipsum dolor sit amet consectetur adipisicing</a> <br>
-                                <p class="other-detail mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                <small class="text-muted">22 Jan 2021</small>
+                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">{{ $item->title }}</a> <br>
+                                <p class="other-detail mt-2">{{ $item->excerpt }}</p>
+                                <small class="text-muted">{{ $item->formated_date }}</small>
                             </div>
                         </div>
-                        <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <div class="col-4 pr-0 my-auto">
-                                <img src="{{ asset('img/about-bg.jpg') }}" alt="" class="w-100 h-75">
-                            </div>
-                            <div class="col-8">
-                                <a href="#" class="other-card-title">Lorem ipsum dolor sit amet consectetur adipisicing</a> <br>
-                                <p class="other-detail mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                <small class="text-muted">22 Jan 2021</small>
-                            </div>
-                        <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <hr>
-                            <div class="col-4 pr-0 my-auto">
-                                <img src="{{ asset('img/about-bg.jpg') }}" alt="" class="w-100 h-75">
-                            </div>
-                            <div class="col-8">
-                                <a href="#" class="other-card-title">Lorem ipsum dolor sit amet consectetur adipisicing</a> <br>
-                                <p class="other-detail mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                <small class="text-muted">22 Jan 2021</small>
-                            </div>
-                        </div>
-                        <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <div class="col-4 pr-0 my-auto">
-                                <img src="{{ asset('img/about-bg.jpg') }}" alt="" class="w-100 h-75">
-                            </div>
-                            <div class="col-8">
-                                <a href="#" class="other-card-title">Lorem ipsum dolor sit amet consectetur adipisicing</a> <br>
-                                <p class="other-detail mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                <small class="text-muted">22 Jan 2021</small>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
