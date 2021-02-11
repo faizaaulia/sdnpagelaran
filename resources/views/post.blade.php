@@ -1,6 +1,6 @@
 @extends('layouts.public-app')
 
-@section('title', Str::ucfirst(Request::segment(1)) . ' | ' . config('app.name'))
+@section('title', Str::ucfirst(Request::segment(1)) . ' ' . Request::query('q') . ' | ' . config('app.name'))
 
 @section('content')
 <main role="main" class="container pt-3">
@@ -11,10 +11,14 @@
               <li class="breadcrumb-item active" aria-current="page">{{ Str::ucfirst(Request::segment(1)) }}</li>
             </ol>
         </nav>
+        @if (Request::query('q'))
+        <h3 class="mb-3">Hasil pencarian "{{ Request::query('q') }}"</h3>
+        @endif
         <div class="row posts mb-5">
             <div class="col-12 col-lg-8">
-                @if ($cari)
-                    <h3 class="mb-3">Hasil pencarian "{{ $cari }}"</h3>
+                @if (!$found)
+                    <p>Pencarian tidak ditemukan</p>
+                    <hr>
                 @endif
                 @forelse ($posts as $post)
                 <div class="card shadow posts-card">
@@ -34,14 +38,12 @@
                     </div>
                 </div>
                 @empty
-                @if ($cari)
-                    Pencarian tidak ditemukan
-                @else
-                    Belum ada {{ Request::segment(1) }}
-                @endif
+                Belum ada {{ Request::segment(1) }}
                 @endforelse
 
-                {{ $posts->links() }}
+                @if ($posts)
+                {{ $posts->appends(request()->query())->links() }}
+                @endif
             </div>
             <div class="col-12 col-lg-4 others">
                 <div class="card shadow py-3">

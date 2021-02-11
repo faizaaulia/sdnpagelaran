@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <meta name="keywords" content="sdn pagelaran, sdn, pagelaran, sd, malang, sd pagelaran, kecamatan pagelaran, kab malang, kabupaten malang, kab. malang, sd negeri pagelaran" />
+        <meta name="keywords" content="sdn pagelaran, sdn, pagelaran, sd, malang, sd pagelaran, kecamatan pagelaran, kab malang, kabupaten malang, kab. malang, sd negeri pagelaran, {{ isset($found) ? Request::query('q') : '' }}" />
         <title> @yield('title') </title>
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -34,22 +34,30 @@
     
     @yield('content')
 
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer py-3 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-lg-4 col-md-6 mb-3">
+                    <h5>Hubungi Kami</h5>
+                    SDN PAGELARAN
+                </div>
+                <div class="col-12 col-lg-4 col-md-6">
                     <h5>Cari Informasi</h5>
                     <form action="{{ route('search') }}" method="get">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Cari" aria-label="Cari" aria-describedby="basic-addon2" name="q">
+                        <div class="input-group mb-3 shadow-sm">
+                            <input type="text" class="form-control input-search" placeholder="Cari" aria-label="Cari" aria-describedby="basic-addon2" name="q" required>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit"><i class="fas fa-search white" style="color: white"></i></button>
+                                <button class="btn btn-primary btn-search" type="submit"><i class="fas fa-search white" style="color: white"></i></button>
                             </div>
                         </div>
                     </form>
                 </div>
+                <div class="col-12 col-md col-lg-4 mb-3">
+                    <h5>Maps</h5>
+                    <iframe class="map-loc shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.0360948821526!2d112.6155712143811!3d-8.199118384506495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78a07850aef64d%3A0xf16ff30bd5ac4962!2sSDN%20Pagelaran!5e0!3m2!1sid!2sid!4v1601881812321!5m2!1sid!2sid" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" scrolling="no" marginheight="0" width="100%" height="250px"></iframe>
+                </div>
             </div>
-            <span class="text-muted">Place sticky footer content here.</span>
+            <span class="text-muted">Copyright</span>
         </div>
     </footer>
 

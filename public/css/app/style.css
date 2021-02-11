@@ -99,12 +99,7 @@ main .wrapper {
   padding: 0px;
 }
 
-main .wrapper .latest-info {
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.808);
-}
-
-main .wrapper .hero-title {
+main .wrapper .latest-info, main .wrapper .hero-title {
   color: rgba(0, 0, 0, 0.808);
 }
 
@@ -133,9 +128,10 @@ main .wrapper .infos .card .card-image:hover img, main .wrapper .posts .card .ca
 
 main .wrapper .infos .card .card-image img, main .wrapper .posts .card .card-image img {
   border-radius: .35rem;
-  max-height: 50vh;
+  height: 40vh;
   width: 100%;
-  height: auto !important;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-transition: -webkit-transform 1.5s ease;
   transition: -webkit-transform 1.5s ease;
   transition: transform 1.5s ease;
@@ -144,7 +140,13 @@ main .wrapper .infos .card .card-image img, main .wrapper .posts .card .card-ima
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   main .wrapper .infos .card .card-image img, main .wrapper .posts .card .card-image img {
-    max-height: 40vh;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 576px) {
+  main .wrapper .infos .card .card-image img, main .wrapper .posts .card .card-image img {
+    max-height: 30vh;
   }
 }
 
@@ -194,26 +196,6 @@ main .wrapper .infos .card .card-detail.other-item img, main .wrapper .posts .ca
   border-radius: .3rem;
 }
 
-main .wrapper .contact {
-  background-color: #ece8e80c;
-  border-radius: .35rem;
-  border: 0.5px solid rgba(0, 0, 0, 0.125);
-}
-
-main .wrapper .contact.shadow {
-  -webkit-box-shadow: 8px 8px 16px #cfcece,  -8px -8px 16px #ffffff !important;
-          box-shadow: 8px 8px 16px #cfcece,  -8px -8px 16px #ffffff !important;
-}
-
-main .wrapper .contact .contact-title {
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.808);
-}
-
-main .wrapper .contact .left .map-loc {
-  border-radius: .35rem;
-}
-
 main .wrapper .breadcrumb {
   background-color: transparent;
 }
@@ -243,6 +225,27 @@ main .wrapper .others .other-item img {
 
 main .wrapper .others .other-item .other-detail {
   display: none;
+}
+
+footer {
+  margin-top: 100px;
+}
+
+footer .input-search {
+  border-radius: .5rem 0 0 .5rem;
+}
+
+footer .btn-search {
+  border-radius: 0 .5rem .5rem 0;
+  background-color: #0278ae;
+}
+
+footer .btn-search:hover {
+  background-color: #016fa1;
+}
+
+footer .map-loc {
+  border-radius: .35rem;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
