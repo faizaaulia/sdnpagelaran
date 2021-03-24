@@ -107,6 +107,6 @@ class AdminController extends Controller
             return $tag->getAttribute('src');
         }
 
-        return 'img/about-bg.jpg';
+        return '-';
     }
 }

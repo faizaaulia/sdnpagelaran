@@ -1,9 +1,9 @@
 @extends('layouts.public-app')
 
-@section('title', $post->title . ' | ' . config('app.name'))
+@section('title', $post->title)
 
 @section('content')
-<main role="main" class="container pt-3">
+<main role="main" class="pt-3">
     <div class="container wrapper py-5">
         <div class="row posts mb-5">
             <div class="col-12 col-lg-8">
@@ -12,8 +12,7 @@
                         <h2 class="mb-3">{{ $post->title }}</h2>
                         <div class="row published-info">
                             <div class="col published-by">
-                                <h6>Dipublikasikan</h6>
-                                <p class="m-0"><i class="fas fa-calendar text-gray-300 mr-1"></i>{{ $post->formated_date }}</p>
+                                <p class="m-0 text-muted"><i class="fas fa-calendar text-gray-300 mr-1"></i>{{ $post->formated_date }}</p>
                             </div>
                         </div>
                         <hr>

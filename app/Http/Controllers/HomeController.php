@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::limit(2)->get();
+        $posts = Post::limit(2)->orderBy('updated_at', 'DESC')->get();
         return view('index', compact('posts'));
     }
 

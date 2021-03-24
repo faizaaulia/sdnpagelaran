@@ -19,9 +19,7 @@
                         {{ Str::ucfirst(Request::segment(2)) . ' ' . Str::ucfirst($postType) }}</h6>
                 </div>
                 <div class="card-body">
-                    <form
-                        action="{{ Request::segment(2) == 'tambah' ? route('store-post', ['type' => $postType]) : route('update-post', ['type' => $postType, 'id' => $post->id]) }}"
-                        method="post" id="create-post" data-type="{{ $postType }}">
+                    <form action="{{ Request::segment(2) == 'tambah' ? route('store-post', ['type' => $postType]) : route('update-post', ['type' => $postType, 'id' => $post->id]) }}" method="post" id="create-post" data-type="{{ $postType }}">
                         @isset($post)
                             @method('put')
                         @endisset

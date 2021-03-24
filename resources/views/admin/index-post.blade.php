@@ -30,8 +30,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>Deskripsi</td>
-                                        <td>{{ $item->created_at }}</td>
+                                        <td style="width: 35%">{{ $item->excerpt }}</td>
+                                        <td>{{ $item->formated_date }}</td>
                                         <td class="d-flex flex-column">
                                             <a href="{{ route('detail-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-detail btn-primary shadow-sm">Detail</a>
                                             <a href="{{ route('edit-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-info shadow-sm">Edit</a>

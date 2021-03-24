@@ -1,9 +1,9 @@
 @extends('layouts.public-app')
 
-@section('title', Str::ucfirst(Request::segment(1)) . ' ' . Request::query('q') . ' | ' . config('app.name'))
+@section('title', Str::ucfirst(Request::segment(1)) . ' ' . Request::query('q'))
 
 @section('content')
-<main role="main" class="container pt-3">
+<main role="main" class="pt-3">
     <div class="container wrapper">
         <nav aria-label="breadcrumb bg-none">
             <ol class="breadcrumb p-0 mt-3">
@@ -22,14 +22,16 @@
                 @endif
                 @forelse ($posts as $post)
                 <div class="card shadow posts-card">
+                    @if ($post->thumbnail !== '-')
                     <a href="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}">
                         <div class="card-image">
                             <img src="{{ asset($post->thumbnail) }}" alt="{{ $post->title }}" class="card-img shadow-sm img-posts">
                         </div>
                     </a>
+                    @endif
                     <div class="card-detail">
                         <a href ="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="clearfix card-title">{{ $post->title }}</a>
-                        <small style="font-weight: 500"><i class="fas fa-calendar text-gray-300 my-2"></i> {{ $post->formated_date }} </small>
+                        <small style="font-weight: 500" class="text-muted"><i class="fas fa-calendar text-gray-300 my-2"></i> {{ $post->formated_date }} </small>
                         <div class="card-text my-2">
                             {!! $post->excerpt !!}
                         </div>
@@ -38,34 +40,38 @@
                     </div>
                 </div>
                 @empty
-                Belum ada {{ Request::segment(1) }}
+                <p class="text-center py-5">Belum ada {{ Request::segment(1) }}</p>
                 @endforelse
 
                 @if ($posts)
-                {{ $posts->appends(request()->query())->links() }}
+                <div class="page-links">
+                    {{ $posts->appends(request()->query())->links() }}
+                </div>
                 @endif
             </div>
             <div class="col-12 col-lg-4 others">
-                <div class="card shadow py-3">
-                    <h4 class="text-center mb-0 hero-title">Informasi Lainnya</h4>
-                    <div>
-                        @foreach ($other as $item)
-                        <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <hr>
-                            <div class="col-4 pr-0 my-auto">
-                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
-                                    <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100 h-75">
-                                </a>
+                @if (count($other) > 0)
+                    <div class="card shadow pt-3 py-sm-3">
+                        <h4 class="text-center mb-0 hero-title">Informasi Lainnya</h4>
+                        <div>
+                            @foreach ($other as $item)
+                            <hr class="m-0 m-sm-3">
+                            <div class="row d-inline d-sm-flex card-detail other-item py-0">
+                                <div class="col col-sm-4 pr-sm-0">
+                                    <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
+                                        <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="">
+                                    </a>
+                                </div>
+                                <div class="col col-sm-8">
+                                    <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">{{ $item->title }}</a> <br>
+                                    <p class="other-detail my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
+                                    <small class="text-muted">{{ $item->formated_date }}</small>
+                                </div>
                             </div>
-                            <div class="col-8">
-                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">{{ $item->title }}</a> <br>
-                                <p class="other-detail mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                <small class="text-muted">{{ $item->formated_date }}</small>
-                            </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

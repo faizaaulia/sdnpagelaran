@@ -42,3 +42,6 @@ Route::group([
         Route::get('{slug}', 'HomeController@postDetail')->name('post.detail');
     });
 Route::get('cari', 'HomeController@postIndex')->name('search');
+Route::get('visi-misi', function() {
+    return view('visi-misi');
+})->name('visiMisi');
