@@ -22,27 +22,29 @@
                     </div>
                 </div>
             </div>
+            @if (count($other) != 0)
             <div class="col-12 col-lg-4 others">
                 <div class="card shadow py-3">
                     <h4 class="text-center mb-0">Informasi Lainnya</h4>
                     <div>
                         @foreach ($other as $item)
                         <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <div class="col-4 pr-0 my-auto">
+                            <div class="col-4 pr-0">
                                 <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
                                     <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100 h-75">
                                 </a>
                             </div>
                             <div class="col-8">
-                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">{{ $item->title }}</a> <br>
-                                <p class="other-detail mt-2">{{ $item->excerpt }}</p>
+                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title d-block text-truncate">{{ $item->title }}</a>
                                 <small class="text-muted">{{ $item->formated_date }}</small>
+                                <p class="other-detail">{{ $item->excerpt }}</p>
                             </div>
                         </div>
                         @endforeach
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </main>

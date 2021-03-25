@@ -1,3 +1,10 @@
+<style>
+    .modal-body img {
+        max-width: 100%;
+        height: auto !important;
+    }
+</style>
+
 <div class="modal-body">
     <div>
         <h4 class="font-weight-bold">{{ $post->title }}</h4>

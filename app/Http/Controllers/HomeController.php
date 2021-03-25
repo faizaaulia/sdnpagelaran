@@ -26,7 +26,7 @@ class HomeController extends Controller
         } else
             $posts = Post::where('type', $request->segment(1))->orderBy('updated_at', 'DESC')->paginate(3);
 
-        $other = Post::limit(5)->orderBy('updated_at', 'DESC')->get();
+        $other = Post::limit(5)->orderBy('updated_at', 'DESC')->where('type', '<>', $request->segment(1))->get();
         return view('post', compact('posts', 'other', 'found'));
     }
 

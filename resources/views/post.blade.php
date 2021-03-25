@@ -40,7 +40,9 @@
                     </div>
                 </div>
                 @empty
+                @if (Request::segment(1) != 'cari')
                 <p class="text-center py-5">Belum ada {{ Request::segment(1) }}</p>
+                @endif
                 @endforelse
 
                 @if ($posts)

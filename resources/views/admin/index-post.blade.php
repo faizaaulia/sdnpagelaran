@@ -18,11 +18,11 @@
                         <table class="table table-bordered" id="postTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <td>No.</td>
+                                    <td style="width: 5%">No.</td>
                                     <td>Judul</td>
-                                    <td>Deskripsi</td>
-                                    <td>Tanggal Publish</td>
-                                    <td>Aksi</td>
+                                    <td style="width: 40%">Deskripsi</td>
+                                    <td style="width: 17%">Tanggal Publish</td>
+                                    <td style="width: 10%">Aksi</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td style="width: 35%">{{ $item->excerpt }}</td>
+                                        <td>{{ $item->excerpt }}</td>
                                         <td>{{ $item->formated_date }}</td>
                                         <td class="d-flex flex-column">
                                             <a href="{{ route('detail-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-detail btn-primary shadow-sm">Detail</a>
@@ -71,7 +71,7 @@
 @push('scripts')
     <script src="{{ asset('js/app/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/app/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/app/admin.js') }}"></script>
+    <script src="{{ asset('js/app/admin-post.min.js') }}"></script>
     <script src="{{ asset('js/app/sweetalert2.all.min.js') }}"></script>
     <script>
         $('#postTable').DataTable();

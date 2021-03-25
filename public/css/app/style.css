@@ -419,6 +419,11 @@ footer .map-loc {
   .prestasi-wrapper .img-thumbnail {
     height: 250px;
   }
+  .others .other-card-title.text-truncate {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: unset;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -433,6 +438,9 @@ footer .map-loc {
   }
   main .others .other-card-title {
     font-size: 16px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   main .others .other-detail {
     font-size: 14px;

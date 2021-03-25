@@ -32,6 +32,8 @@ Route::prefix('cms-admin')->middleware(['auth'])->group(function() {
     Route::get('edit', 'AdminController@edit')->name('edit-post');
     Route::put('edit-{type}/{id}', 'AdminController@update')->name('update-post');
     Route::delete('delete-{type}/{id}', 'AdminController@destroy')->name('delete-post');
+    Route::get('edit-profile', 'AdminController@editProfile')->name('edit-profile');
+    Route::put('update-profile', 'AdminController@updateProfile')->name('update-profile');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

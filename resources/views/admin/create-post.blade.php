@@ -26,8 +26,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="title">Judul</label>
-                            <input type="text" class="form-control" id="title" name="title"
-                                placeholder="Judul {{ Str::ucfirst($postType) }}" value="{{ isset($post) ? $post->title : '' }}">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Judul {{ Str::ucfirst($postType) }}" value="{{ isset($post) ? $post->title : '' }}">
                         </div>
                         <div class="form-group">
                             <label for="desc">Deskripsi {{ Str::ucfirst($postType) }}</label>
@@ -42,7 +41,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/app/admin.js') }}"></script>
+    <script src="{{ asset('js/app/admin-post.min.js') }}"></script>
     <script src="{{ asset('js/app/sweetalert2.all.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>

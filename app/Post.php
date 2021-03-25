@@ -12,7 +12,7 @@ class Post extends Model
 
     public function getExcerptAttribute() {
         $stripped = strip_tags($this->desc);
-        return Str::words($stripped, 30, ' ...');
+        return Str::words($stripped, 30, ' . . .');
     }
 
     public function getFormatedDateAttribute() {

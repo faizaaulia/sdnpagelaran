@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -75,6 +79,7 @@ class AdminController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title);
+        $data['thumbnail'] = $this->addThumbnail($request->desc);
 
         if ($data) {
             $post = Post::where('id', $id)->firstOrFail();
@@ -108,5 +113,25 @@ class AdminController extends Controller
         }
 
         return '-';
+    }
+
+    public function editProfile() {
+        $user = Auth::user();
+
+        return response()->json($user, 200);
+    }
+
+    public function updateProfile(UpdateAdminRequest $request) {
+        $data = $request->validated();
+
+        if ($data) {
+            User::find(Auth::user()->getAuthIdentifier())->update([
+                'username' => $data['username'],
+                'password' => Hash::make($data['confirm-password'])
+            ]);
+            return response()->json('success', 200);
+        }
+
+        return response()->json('error', 400);
     }
 }

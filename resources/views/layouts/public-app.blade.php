@@ -4,7 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta name="keywords" content="sdn pagelaran, sdn, pagelaran, sd, malang, sd pagelaran, kecamatan pagelaran, kab malang, kabupaten malang, kab. malang, sd negeri pagelaran, sdn 1, sdn 1 pagelaran sd negeri 1 pagelaran, {{ isset($found) ? Request::query('q') : '' }}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="title" content="SD Negeri 1 Pagelaran"/>
+        <meta name="description" content="Website SD Negeri 1 Pagelaran, Kab. Malang"/>
+        <meta name="geo.placename" content="indonesia"/>
+        <meta name="geo.country" content="id"/>
+        <meta name="content-language" content="id"/>
+        <meta property="og:title" content="SDN 1 Pagelaran">
+        <meta property="og:site_name" content="SD Negeri 1 Pagelaran">
+        <meta property="og:url" content="https://sdn1pagelaran.sch.id/">
+
         <title> @yield('title') | {{ config('app.name') }} </title>
+        
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -61,7 +73,7 @@
                             <i class="fas fa-phone-square-alt mr-2"></i><a href="tel:0341123456" class="footer-link">0341 - 123 456</a>
                         </li>
                         <li class="email d-flex align-items-start">
-                            <i class="fas fa-envelope-square mr-2"></i><a href="mailto:contact@sdnpagelaran-mlg.sch.id" class="footer-link">contact@sdnpagelaran-mlg.sch.id</a>
+                            <i class="fas fa-envelope-square mr-2"></i><a href="mailto:info@sdn1pagelaran.sch.id" class="footer-link">info@sdn1pagelaran.sch.id</a>
                         </li>
                     </ul>
                 </div>
@@ -82,7 +94,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <small class="text-muted">2021 © Copyright SD Negeri 1. Pagelaran All rights Reserved.</small>
+                <small class="text-muted">2021 © Copyright SD Negeri 1 Pagelaran. All rights Reserved.</small>
             </div>
         </div>
     </footer>
