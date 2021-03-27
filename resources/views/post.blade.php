@@ -6,7 +6,7 @@
 <main role="main" class="pt-3">
     <div class="container wrapper">
         <nav aria-label="breadcrumb bg-none">
-            <ol class="breadcrumb p-0 mt-3">
+            <ol class="breadcrumb p-0 my-3">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
               <li class="breadcrumb-item active" aria-current="page">{{ Str::ucfirst(Request::segment(1)) }}</li>
             </ol>
@@ -51,30 +51,32 @@
                 </div>
                 @endif
             </div>
+            @if (count($other) > 0)
             <div class="col-12 col-lg-4 others">
-                @if (count($other) > 0)
-                    <div class="card shadow pt-3 py-sm-3">
-                        <h4 class="text-center mb-0 hero-title">Informasi Lainnya</h4>
-                        <div>
-                            @foreach ($other as $item)
-                            <hr class="m-0 m-sm-3">
-                            <div class="row d-inline d-sm-flex card-detail other-item py-0">
-                                <div class="col col-sm-4 pr-sm-0">
-                                    <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
-                                        <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="">
-                                    </a>
-                                </div>
-                                <div class="col col-sm-8">
-                                    <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">{{ $item->title }}</a> <br>
-                                    <p class="other-detail my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime similique animi nisi enim, illo, quos ipsa ad quae accusantium qui odit. A accusamus provident laudantium error, quos dignissimos inventore vitae!</p>
-                                    <small class="text-muted">{{ $item->formated_date }}</small>
-                                </div>
-                            </div>
-                            @endforeach
+                <div class="card shadow py-3">
+                    <h4 class="text-center mb-1 hero-title">Informasi Lainnya</h4>
+                    @foreach ($other as $item)
+                    <hr class="my-2">
+                    <div class="row d-flex flex-row card-detail other-item py-2">
+                        @if ($item->thumbnail !== '-')
+                        <div class="col-4 pr-0">
+                            <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
+                                <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100">
+                            </a>
+                        </div>
+                        @endif
+                        <div class="col{{ $item->thumbnail == '-' ? '' : '-8' }}">
+                            <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">
+                                <p class="mb-0">{{ $item->title }}</p>
+                            </a>
+                            <small class="text-muted">{{ $item->formated_date }}</small>
+                            <p class="other-detail">{{ $item->excerpt }}</p>
                         </div>
                     </div>
-                @endif
+                    @endforeach
+                </div>
             </div>
+            @endif
         </div>
     </div>
 </main>

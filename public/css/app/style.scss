@@ -163,6 +163,7 @@ main {
                     max-width: 100%;
                     border-radius: .35rem;
                     height: auto !important;
+                    margin-bottom: 12px;
                 }
             }
             a {
@@ -177,6 +178,11 @@ main {
                 }
                 &.other-card-title {
                     font-size: 15px;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
                 }
             }
             .btn-read-more {
@@ -223,7 +229,6 @@ main {
             img {
                 width: 100%;
                 object-fit: cover;
-                height: 10vh !important;
             }
             .other-detail {
                 display: none;
@@ -284,7 +289,7 @@ main {
 }
 
 footer {
-    margin-top: 200px;
+    margin-top: 100px;
     .contact {
         .box {
             line-height: 30px;
@@ -379,6 +384,13 @@ footer {
                         max-height: 40vh;
                     }
                 }
+                .card-detail {
+                    a {
+                        &.other-card-title {
+                            -webkit-line-clamp: 4;
+                        }
+                    }
+                }
             }   
         }
     }
@@ -400,45 +412,39 @@ footer {
             height: 250px;
         }
     }
-    .others {
-        .other-card-title {
-            &.text-truncate {
-                overflow: unset;
-                text-overflow: unset;
-                white-space: unset;
+}
+@media only screen and (min-width: 768px) {
+    main {
+        .prestasi-wrapper {
+            .detail {
+                min-height: 250px;
             }
         }
     }
 }
-@media only screen and (min-width: 768px) {
-    .prestasi-wrapper {
-        .detail {
-            min-height: 250px;
-        }
-    }
-}
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 576px) and (max-width: 991.98px) {
     main {
         .infos, .posts {
             .card {
                 .card-image {
                     img {
-                        height: 50vh;
+                        min-height: 60vh;
+                        max-height: 75vh;
                     }
                 }
             }
         }
         .others {
-            .other-card-title {
-                font-size: 16px !important;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-            .other-detail {
-                font-size: 14px;
-                display: block !important;
+            .other-item {
+                img {
+                    max-height: 25vh !important;
+                    height: auto !important;
+                }
+                .other-detail {
+                    font-size: 14px;
+                    display: block !important;
+                }
             }
         }
     }
@@ -470,14 +476,23 @@ footer {
             }
         }
     }
-}
-
-@media only screen and (max-width: 991.98px) {
     main {
         .others {
             .other-item {
                 img {
-                    height: 20vh !important;
+                    height: 10vh !important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    main {
+        .others {
+            .other-item {
+                img {
+                    height: 15vh !important;
                 }
             }
         }

@@ -62,10 +62,10 @@
             <div class="row mb-5">
                 <div class="col-12 col-md-6 col-lg-4 mb-3 contact">
                     <div class="box mb-3">
-                        <h5 class="mb-4">Hubungi Kami</h5>
+                        <h5 class="mb-3">Hubungi Kami</h5>
                         <h3 class="font-weight-bold my-3">SD NEGERI 1 PAGELARAN</h3>
                         <a href="https://www.google.com/maps/place/SDN+Pagelaran,+Jl.+Raya+Pagelaran+No.43,+Pagelaran,+Kec.+Pagelaran,+Malang,+Jawa+Timur+65174/@-8.1991237,112.6177599,17z/data=!4m2!3m1!1s0x2e78a07850aef64d:0xf16ff30bd5ac4962?hl=id&gl=ID" target="blank" class="footer-link">
-                            Jl. Raya Pagelaran No.43, Pagelaran, Kec. Pagelaran, Kab. Malang, Jawa Timur 65174
+                            Jl. Raya Pagelaran No. 43, Pagelaran, Kec. Pagelaran, Kab. Malang, Jawa Timur 65174
                         </a>
                     </div>
                     <ul class="pl-0 ml-1">
@@ -77,8 +77,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="mb-4">Cari Informasi</h5>
+                <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <h5 class="mb-3">Cari Informasi</h5>
                     <form action="{{ route('search') }}" method="get">
                         <div class="input-group mb-3 shadow-sm my-3">
                             <input type="text" class="form-control input-search shadow" placeholder="Cari . . ." aria-label="Cari" aria-describedby="basic-addon2" name="q" required>
@@ -89,13 +89,13 @@
                     </form>
                 </div>
                 <div class="col-12 col-md col-lg-4 mb-3">
-                    <h5 class="mb-4">Maps</h5>
+                    <h5 class="mb-3">Maps</h5>
                     <iframe class="map-loc shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.0360948821526!2d112.6155712143811!3d-8.199118384506495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78a07850aef64d%3A0xf16ff30bd5ac4962!2sSDN%20Pagelaran!5e0!3m2!1sid!2sid!4v1601881812321!5m2!1sid!2sid" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" scrolling="no" marginheight="0" width="100%" height="250px"></iframe>
                 </div>
             </div>
-            <div class="text-center">
-                <small class="text-muted">2021 © Copyright SD Negeri 1 Pagelaran. All rights Reserved.</small>
-            </div>
+        </div>
+        <div class="text-center border-top pt-3">
+            <small class="text-muted">2021 © Copyright SD Negeri 1 Pagelaran. All rights Reserved.</small>
         </div>
     </footer>
 

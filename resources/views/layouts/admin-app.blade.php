@@ -21,9 +21,8 @@
     @stack('styles')
     <style>
         label { color: rgb(54, 54, 54); }
-        .form-control {
-            color: #545458;
-        }
+        .form-control { color: #545458; }
+        .dropdown-menu { width: unset !important }
     </style>
 
 </head>

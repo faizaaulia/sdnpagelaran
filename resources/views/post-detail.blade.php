@@ -5,7 +5,7 @@
 @section('content')
 <main role="main" class="pt-3">
     <div class="container wrapper py-5">
-        <div class="row posts mb-5">
+        <div class="row posts mb-5 mt-2">
             <div class="col-12 col-lg-8">
                 <div class="card shadow posts-card">
                     <div class="card-detail">
@@ -26,22 +26,25 @@
             <div class="col-12 col-lg-4 others">
                 <div class="card shadow py-3">
                     <h4 class="text-center mb-0">Informasi Lainnya</h4>
-                    <div>
-                        @foreach ($other as $item)
-                        <div class="row d-flex flex-row card-detail other-item pb-0">
-                            <div class="col-4 pr-0">
-                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
-                                    <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100 h-75">
-                                </a>
-                            </div>
-                            <div class="col-8">
-                                <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title d-block text-truncate">{{ $item->title }}</a>
-                                <small class="text-muted">{{ $item->formated_date }}</small>
-                                <p class="other-detail">{{ $item->excerpt }}</p>
-                            </div>
+                    @foreach ($other as $item)
+                    <hr class="my-2">
+                    <div class="row d-flex flex-row card-detail other-item py-2">
+                        @if ($item->thumbnail !== '-')
+                        <div class="col-4 pr-0">
+                            <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}">
+                                <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="w-100">
+                            </a>
                         </div>
-                        @endforeach
+                        @endif
+                        <div class="col{{ $item->thumbnail == '-' ? '' : '-8' }}">
+                            <a href="{{ route('post.detail', ['type' => $item->type, 'slug' => $item->slug]) }}" class="other-card-title">
+                                <p class="mb-0">{{ $item->title }}</p>
+                            </a>
+                            <small class="text-muted">{{ $item->formated_date }}</small>
+                            <p class="other-detail">{{ $item->excerpt }}</p>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             @endif
@@ -49,3 +52,9 @@
     </div>
 </main>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() { $('.card-detail .card-text a').attr('target', '_blank') })
+</script>
+@endpush

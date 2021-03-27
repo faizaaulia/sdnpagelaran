@@ -201,6 +201,7 @@ main .card .card-detail .card-text img {
   max-width: 100%;
   border-radius: .35rem;
   height: auto !important;
+  margin-bottom: 12px;
 }
 
 main .card .card-detail a.card-title, main .card .card-detail a.other-card-title {
@@ -217,6 +218,11 @@ main .card .card-detail a.card-title:hover, main .card .card-detail a.other-card
 
 main .card .card-detail a.other-card-title {
   font-size: 15px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
 }
 
 main .card .card-detail .btn-read-more {
@@ -268,7 +274,6 @@ main .others .other-item img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  height: 10vh !important;
 }
 
 main .others .other-item .other-detail {
@@ -336,7 +341,7 @@ main .prestasi-wrapper .detail .date-loc {
 }
 
 footer {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 footer .contact .box {
@@ -407,6 +412,9 @@ footer .map-loc {
   main .infos .card .card-image img, main .posts .card .card-image img {
     max-height: 40vh;
   }
+  main .infos .card .card-detail a.other-card-title, main .posts .card .card-detail a.other-card-title {
+    -webkit-line-clamp: 4;
+  }
   .prestasi-wrapper .img-thumbnail {
     height: 200px !important;
   }
@@ -419,30 +427,24 @@ footer .map-loc {
   .prestasi-wrapper .img-thumbnail {
     height: 250px;
   }
-  .others .other-card-title.text-truncate {
-    overflow: unset;
-    text-overflow: unset;
-    white-space: unset;
-  }
 }
 
 @media only screen and (min-width: 768px) {
-  .prestasi-wrapper .detail {
+  main .prestasi-wrapper .detail {
     min-height: 250px;
   }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 576px) and (max-width: 991.98px) {
   main .infos .card .card-image img, main .posts .card .card-image img {
-    height: 50vh;
+    min-height: 60vh;
+    max-height: 75vh;
   }
-  main .others .other-card-title {
-    font-size: 16px !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  main .others .other-item img {
+    max-height: 25vh !important;
+    height: auto !important;
   }
-  main .others .other-detail {
+  main .others .other-item .other-detail {
     font-size: 14px;
     display: block !important;
   }
@@ -463,11 +465,14 @@ footer .map-loc {
   header nav .dropdown .dropdown-menu {
     margin-left: 25px;
   }
+  main .others .other-item img {
+    height: 10vh !important;
+  }
 }
 
-@media only screen and (max-width: 991.98px) {
+@media only screen and (max-width: 576px) {
   main .others .other-item img {
-    height: 20vh !important;
+    height: 15vh !important;
   }
 }
 

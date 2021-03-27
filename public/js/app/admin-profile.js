@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    
+    if ($(window).width() <= 768) {
+        $('#accordionSidebar').addClass('toggled')
+        $('.collapse').removeClass('show')
+    }
+
     $('#btn-profile').click(function (e) {
         e.preventDefault();
         $('input[type=password]').val('')
