@@ -164,6 +164,7 @@ main {
                     border-radius: .35rem;
                     height: auto !important;
                     margin-bottom: 12px;
+                    margin-top: 12px;
                 }
             }
             a {
@@ -183,6 +184,13 @@ main {
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: -webkit-box;
+                    p {
+                        &:hover {
+                            color: #0278ae;
+                            text-decoration: none;
+                            transition: .35s;
+                        }
+                    }
                 }
             }
             .btn-read-more {
@@ -225,6 +233,12 @@ main {
         top: 5rem;
         width: 100%;
         height: 100%;
+        hr {
+            &.divider {
+                margin-right: 12px;
+                margin-left: 12px;
+            }
+        }
         .other-item {
             img {
                 width: 100%;

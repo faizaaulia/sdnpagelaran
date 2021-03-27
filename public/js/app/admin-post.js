@@ -1,19 +1,13 @@
 $(document).ready(function () {
-    $('.form-control').keyup(function () {
-        $(this).removeClass('is-invalid');
-    })
+    $('.form-control').keyup(function () { $(this).removeClass('is-invalid'); })
 
     function successRedirect(res) {
-        const redirect = function () {
-            window.location.href = res;
-        }
+        const redirect = function () { window.location.href = res; }
         $(document).mousedown(redirect).keypress(redirect);
     }
 
     function errorRedirect() {
-        const redirect = function () {
-            $('.swal2-container').modal('hide');
-        }
+        const redirect = function () { $('.swal2-container').modal('hide'); }
         $(document).mousedown(redirect).keypress(redirect);
     }
 
@@ -24,7 +18,7 @@ $(document).ready(function () {
         $('.invalid-cke').remove();
         $('#cke_desc').css('border-color', '');
         $('#desc').val(CKEDITOR.instances.desc.getData());
-        const inf = $('input[name=_method]').val() ? 'mengubah' : 'menambahkan';
+        const inf = $(this).serializeArray()[0].value == 'put' ? 'mengubah' : 'menambahkan';
 
         $.ajax({
             url: $(this).attr('action'),
@@ -55,6 +49,7 @@ $(document).ready(function () {
             success: function (res) {
                 $('#detailModal').modal('show');
                 $('.modal-detail').html(res);
+                $('#detailModal .modal-content .modal-detail a').attr('target', '_blank')
             },
             error: function () {
                 Swal.fire('Error!', 'Berita tidak ditemukan.', 'error');

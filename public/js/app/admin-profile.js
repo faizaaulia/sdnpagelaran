@@ -42,3 +42,10 @@ $(document).ready(function () {
         })
     })
 })
+
+function showPassword(name) {
+    const pass = name == 'real' ? 'password' : 'confirm-password'
+    const passInput = $('#'+pass)
+    if (passInput.attr('type') == 'password') passInput.attr('type', 'text')
+    else passInput.attr('type', 'password')
+}

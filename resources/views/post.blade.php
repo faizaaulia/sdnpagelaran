@@ -51,12 +51,12 @@
                 </div>
                 @endif
             </div>
-            @if (count($other) > 0)
+            @if (count($other) > 0 && $found)
             <div class="col-12 col-lg-4 others">
                 <div class="card shadow py-3">
                     <h4 class="text-center mb-1 hero-title">Informasi Lainnya</h4>
                     @foreach ($other as $item)
-                    <hr class="my-2">
+                    <hr class="my-2 {{ $loop->first ? '' : 'divider' }}">
                     <div class="row d-flex flex-row card-detail other-item py-2">
                         @if ($item->thumbnail !== '-')
                         <div class="col-4 pr-0">

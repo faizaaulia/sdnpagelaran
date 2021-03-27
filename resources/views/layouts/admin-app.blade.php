@@ -205,10 +205,27 @@
                                 <div class="form-group">
                                     <label for="password">Password Baru</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password Baru">
+                                    <div class="row">
+                                        <div class="col-12 col-sm">
+                                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                                Password minimal 6 karakter.
+                                            </small>
+                                        </div>
+                                        <div class="col-12 col-sm d-sm-flex">
+                                            <div class="custom-control custom-checkbox ml-auto mt-1">
+                                                <input type="checkbox" class="custom-control-input" id="showPass" onchange="showPassword('real')">
+                                                <label class="custom-control-label" for="showPass"><small>Tampilkan password</small></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirm-password">Konfirmasi Password</label>
                                     <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Konfirmasi Password">
+                                    <div class="custom-control custom-checkbox mt-1">
+                                        <input type="checkbox" class="custom-control-input" id="showConfirm" onchange="showPassword('confirm')">
+                                        <label class="custom-control-label" for="showConfirm"><small>Tampilkan password</small></label>
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between">

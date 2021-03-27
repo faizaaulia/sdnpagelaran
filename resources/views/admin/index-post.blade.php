@@ -74,6 +74,6 @@
     <script src="{{ asset('js/app/admin-post.min.js') }}"></script>
     <script src="{{ asset('js/app/sweetalert2.all.min.js') }}"></script>
     <script>
-        $('#postTable').DataTable();
+        $(document).ready(function() { $('#postTable').DataTable(); })
     </script>
 @endpush

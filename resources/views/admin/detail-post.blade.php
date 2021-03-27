@@ -8,7 +8,7 @@
 <div class="modal-body">
     <div>
         <h4 class="font-weight-bold">{{ $post->title }}</h4>
-        <small>{{ $post->created_at }}</small>
+        <small>{{ $post->formated_date }}</small>
     </div>
     <hr>
     <div>

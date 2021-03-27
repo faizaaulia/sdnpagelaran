@@ -37,7 +37,7 @@
                             <div class="card-detail">
                                 <a href ="{{ route('post.detail', ['type' => $post->type, 'slug' => $post->slug]) }}" class="clearfix card-title">{{ $post->title }}</a>
                                 <small style="font-weight: 500" class="text-muted"><i class="fas fa-calendar text-gray-300 my-2"></i> {{ $post->formated_date }} </small>
-                                <div class="card-text my-2">
+                                <div class="card-text mb-2">
                                     {!! $post->excerpt !!}
                                 </div>
                                 <hr class="my-2">
