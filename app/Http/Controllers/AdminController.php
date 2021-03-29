@@ -20,7 +20,7 @@ class AdminController extends Controller
 
     public function indexPost(Request $request)
     {
-        $posts = Post::get()->where('type', $request->type);
+        $posts = Post::orderBy('updated_at', 'DESC')->get()->where('type', $request->type);
         return view('admin.index-post', compact('posts'));
     }
 
