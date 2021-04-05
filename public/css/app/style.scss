@@ -150,7 +150,7 @@ main {
             }
             img {
                 border-radius: .35rem;
-                height: 40vh;
+                max-height: 50vh;
                 width: 100%;
                 object-fit: cover;
                 transition: transform 1.5s ease;
@@ -158,6 +158,12 @@ main {
         }
         .card-detail {
             padding: 12px;
+            &.detail-post {
+                padding-bottom: 0px;
+                iframe, video {
+                    border-radius: 5px;
+                }
+            }
             .card-text {
                 img {
                     max-width: 100%;

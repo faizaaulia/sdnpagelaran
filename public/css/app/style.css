@@ -183,7 +183,7 @@ main .card .card-image:hover img {
 
 main .card .card-image img {
   border-radius: .35rem;
-  height: 40vh;
+  max-height: 50vh;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -195,6 +195,14 @@ main .card .card-image img {
 
 main .card .card-detail {
   padding: 12px;
+}
+
+main .card .card-detail.detail-post {
+  padding-bottom: 0px;
+}
+
+main .card .card-detail.detail-post iframe, main .card .card-detail.detail-post video {
+  border-radius: 5px;
 }
 
 main .card .card-detail .card-text img {

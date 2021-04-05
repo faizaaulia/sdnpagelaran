@@ -49,7 +49,7 @@ $(document).ready(function () {
             success: function (res) {
                 $('#detailModal').modal('show');
                 $('.modal-detail').html(res);
-                $('#detailModal .modal-content .modal-detail a').attr('target', '_blank')
+                $('#detailModal .modal-content .modal-body a').attr('target', '_blank')
             },
             error: function () {
                 Swal.fire('Error!', 'Berita tidak ditemukan.', 'error');

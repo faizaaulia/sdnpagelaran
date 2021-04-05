@@ -106,10 +106,26 @@ class AdminController extends Controller
         $doc = new \DOMDocument();
         @$doc->loadHTML($desc);
 
-        $tags = $doc->getElementsByTagName('img');
- 
+        $tags = $doc->getElementsByTagName('*');
+        $type = ['img', 'video', 'iframe'];
+
         foreach ($tags as $tag) {
-            return $tag->getAttribute('src');
+            if (in_array($tag->nodeName, $type)) {
+                switch ($tag->nodeName) {
+                    case 'img':
+                        return $tag->getAttribute('src');
+                        break;
+                    case 'iframe':
+                        $id = Str::after($tag->getAttribute('src'), '/embed/');
+                        return 'http://img.youtube.com/vi/' . $id . '/maxresdefault.jpg';
+                        break;
+                    case 'video':
+                        return '-';
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         return '-';

@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->excerpt }}</td>
+                                        <td>{!! $item->excerpt !!}</td>
                                         <td>{{ $item->formated_date }}</td>
                                         <td class="d-flex flex-column">
                                             <a href="{{ route('detail-post', ['type' => $item->type, 'id' => $item->id]) }}" class="mb-2 btn btn-sm btn-detail btn-primary shadow-sm">Detail</a>

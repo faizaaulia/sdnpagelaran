@@ -8,7 +8,7 @@
         <div class="row posts mb-5 mt-2">
             <div class="col-12 col-lg-8">
                 <div class="card shadow posts-card">
-                    <div class="card-detail">
+                    <div class="card-detail detail-post">
                         <h2 class="mb-3">{{ $post->title }}</h2>
                         <div class="row published-info">
                             <div class="col published-by">
